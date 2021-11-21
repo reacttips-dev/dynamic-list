@@ -89,7 +89,7 @@ export class Scrollbar extends React.PureComponent<Props, State> {
     };
     private trackInterval: any;
     private trackTimeout: any;
-    private trackAnimation: any;
+    private readonly trackAnimation: any;
     private track: any;
 
     constructor(props: Props) {
