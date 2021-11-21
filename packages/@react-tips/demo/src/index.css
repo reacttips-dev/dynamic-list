@@ -1,0 +1,116 @@
+.c-scrollbar {
+    position: relative;
+    overflow: hidden
+}
+
+.c-scrollbar__hider {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    outline: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: -50px;
+    bottom: 0;
+    height: 100%;
+    transform: translateZ(0)
+}
+
+.c-scrollbar__hider::-webkit-scrollbar {
+    display: none
+}
+
+.c-scrollbar--inherit_size {
+    width: 100%
+}
+
+.c-scrollbar--inherit_size .c-scrollbar__hider {
+    margin-right: -50px;
+    position: relative;
+    right: 0
+}
+
+.c-scrollbar__track {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    bottom: 4px;
+    width: 8px
+}
+
+.c-scrollbar__track:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: -4px;
+    background: none
+}
+
+.c-scrollbar--hidden>.c-scrollbar__track {
+    display: none
+}
+
+.c-scrollbar__bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-radius: 4px;
+    background: rgba(29, 28, 29, .52);
+    opacity: 0;
+    cursor: default;
+    outline: none;
+    z-index: 1;
+    will-change: transform
+}
+
+.c-scrollbar:hover .c-scrollbar__bar,
+.c-scrollbar__bar:active {
+    opacity: 1
+}
+
+.c-scrollbar__bar:active:after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    cursor: default
+}
+
+.c-scrollbar--always_visible .c-scrollbar__bar {
+    opacity: 1
+}
+
+.c-scrollbar--monkey .c-scrollbar__child {
+    padding-right: 12px
+}
+
+.c-scrollbar--monkey.c-scrollbar--hidden .c-scrollbar__child {
+    padding-right: 0
+}
+
+.c-scrollbar--monkey .c-scrollbar__track {
+    border-radius: 3px;
+    background: rgba(248, 248, 248, 1);
+    z-index: 1
+}
+
+.c-scrollbar--monkey .c-scrollbar__bar {
+    background: rgba(29, 28, 29, .52);
+    box-shadow: 0 3px 0 #fff, 0 -3px 0 #fff
+}
+
+.c-scrollbar--monkey .c-scrollbar__bar,
+.c-scrollbar--monkey .c-scrollbar__bar:active,
+.c-scrollbar--monkey:hover .c-scrollbar__bar {
+    opacity: 1
+}
+
+.c-scrollbar--fade:not(:hover) .c-scrollbar__bar {
+    transition: opacity .1s .5s
+}

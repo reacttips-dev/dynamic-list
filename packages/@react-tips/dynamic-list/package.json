@@ -1,0 +1,13 @@
+{
+  "name": "@react-tips/dynamic-list",
+  "description": "A Virtualized component like Slack Messages List",
+  "version": "0.0.0",
+  "private": false,
+  "main": "DynamicList.js",
+  "module": "DynamicList.module.js",
+  "types": "DynamicList.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ]
+}
