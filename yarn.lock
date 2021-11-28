@@ -328,6 +328,13 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@reacttips/useragent@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/@reacttips/useragent/-/useragent-1.0.1.tgz#4af68f6a58833f5ac70afa621d46fc400b9e3da3"
+  integrity sha512-jBPqcr54cKzanR6ALiCQIrnv73soM5fAXARhfuSDEAils8x2H2w4k+2nZhFGS1qfe7RhdmrDMIoSC74JZJq0Nw==
+  dependencies:
+    ua-parser-js "^0.7.18"
+
 "@types/classnames@^2.3.1":
   version "2.3.1"
   resolved "https://registry.npmjs.org/@types/classnames/-/classnames-2.3.1.tgz#3c2467aa0f1a93f1f021e3b9bcf938bd5dfdc0dd"
@@ -2923,6 +2930,11 @@ type-is@~1.6.17, type-is@~1.6.18:
   dependencies:
     media-typer "0.3.0"
     mime-types "~2.1.24"
+
+ua-parser-js@^0.7.18:
+  version "0.7.31"
+  resolved "https://registry.npmjs.org/ua-parser-js/-/ua-parser-js-0.7.31.tgz#649a656b191dffab4f21d5e053e27ca17cbff5c6"
+  integrity sha512-qLK/Xe9E2uzmYI3qLeOmI0tEOt+TBBQyUIAh4aAgU05FVYzeZrKUdkAZfBNVGRaHVgV0TDkdEngJSw/SyQchkQ==
 
 unpipe@1.0.0, unpipe@~1.0.0:
   version "1.0.0"

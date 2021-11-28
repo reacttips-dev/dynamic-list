@@ -1,8 +1,7 @@
 import React, {MouseEvent, UIEventHandler} from 'react';
 import {noop} from 'lodash';
 import classNames from 'classnames';
-
-// import UserAgent from '@reacttips-dev/useragent';
+import UserAgent from '@reacttips/useragent';
 
 import {Content} from './Content';
 
@@ -311,7 +310,7 @@ export class Scrollbar extends React.PureComponent<Props, State> {
             color,
         } = this.props;
 
-        const _ = /*UserAgent.isBrowser("Firefox")*/false ? -1 : undefined;
+        const _ = UserAgent.isBrowser("Firefox") ? -1 : undefined;
 
         return (
             <div
