@@ -114,3 +114,51 @@
 .c-scrollbar--fade:not(:hover) .c-scrollbar__bar {
     transition: opacity .1s .5s
 }
+
+.c-virtual_list__item,
+.c-virtual_list__sticky_container {
+    position: absolute;
+    width: 100%
+}
+
+.c-virtual_list__item--auto_width {
+    width: auto
+}
+
+.c-virtual_list__item--sticky {
+    position: -webkit-sticky;
+    position: sticky
+}
+
+.c-virtual_list__item--sticky-animated {
+    transition: top .2s linear;
+    will-change: top
+}
+
+.c-virtual_list--scrollbar {
+    overflow: hidden
+}
+
+.c-virtual_list__scroll_container--scrolling {
+    pointer-events: none
+}
+
+.c-virtual_list__item--focus:focus,
+.c-virtual_list__item:focus {
+    outline-width: 0;
+    outline-style: none
+}
+
+.c-virtual_list__item--focus:focus:after {
+    content: "";
+    position: absolute;
+    display: block;
+    pointer-events: none;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    --saf-0: rgba(18, 100, 163, 1);
+    box-shadow: 0 0 0 1px var(--saf-0), 0 0 0 5px rgba(29, 155, 209, .3);
+    border-radius: 4px
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import {pick} from 'lodash';
+import {pick, noop} from 'lodash';
 import keycode from 'keycode';
 import classNames from 'classnames';
 
@@ -41,6 +41,32 @@ const enterCode = keycode("enter");
 const tabCode = keycode("tab");
 
 export class ListItem extends React.Component<Props, State> {
+    static displayName = "ListItem";
+    static defaultProps = {
+        children: null,
+        onFocusEnter: noop,
+        onFocusWithin: noop,
+        onFocusLeave: noop,
+        onHeightChange: noop,
+        onMouseDown: noop,
+        onClick: noop,
+        onKeyDown: noop,
+        onContextMenu: noop,
+        onTabWithin: noop,
+        className: "",
+        top: undefined,
+        zIndex: undefined,
+        role: "listitem",
+        height: 0,
+        validity: true,
+        hasFocus: false,
+        hasFocusWithin: false,
+        shouldHorizontallyScroll: false,
+        tabIndex: -1,
+        useStaticHeight: false,
+        dataQA: null,
+    }
+
     private node: any = undefined;
     private mutationObserver: any = undefined;
 
@@ -246,23 +272,23 @@ export class ListItem extends React.Component<Props, State> {
         if (!this.props.children) return null;
 
         const {
-            id: t,
-            children: n,
+            id,
+            children,
             className,
-            top: i,
-            zIndex: o,
-            role: d,
-            height: u,
-            hasFocus: p,
-            hasFocusWithin: h,
-            shouldHorizontallyScroll: f,
+            top,
+            zIndex,
+            role,
+            height,
+            hasFocus,
+            hasFocusWithin,
+            shouldHorizontallyScroll,
             tabIndex: _,
-            useStaticHeight: g,
-            hasKeyboardFocus: O,
-            dataQA: v
+            useStaticHeight,
+            hasKeyboardFocus,
+            dataQA
         } = this.props;
 
-        const j = pick(this.props,
+        const itemProps = pick(this.props,
             [
                 "id",
                 "children",
@@ -292,11 +318,38 @@ export class ListItem extends React.Component<Props, State> {
             ]);
 
         const itemClass = classNames(className, "c-virtual_list__item", {
-            "c-virtual_list__item--focus": p && O,
-            "c-virtual_list__item--focus-within": h,
-            "c-virtual_list__item--auto_width": f
+            "c-virtual_list__item--focus": hasFocus && hasKeyboardFocus,
+            "c-virtual_list__item--focus-within": hasFocusWithin,
+            "c-virtual_list__item--auto_width": shouldHorizontallyScroll,
         });
 
-
+        return (
+            <div
+                {...Object.assign({}, itemProps, {
+                    onMouseDown: this.onMouseDown,
+                    onClick: this.onClick,
+                    onKeyDown: this.onKeyDown,
+                    onContextMenu: this.onContextMenu,
+                    className: itemClass,
+                    tabIndex: _,
+                    role,
+                    style: useStaticHeight ? {
+                        top,
+                        height,
+                        zIndex
+                    } : {
+                        top,
+                        zIndex
+                    },
+                    ref: this.setRef,
+                    id,
+                    "data-qa": dataQA || "virtual-list-item"
+                })}
+            >
+                {children}
+            </div>
+        )
     }
 }
+
+// TODO: maybe wrap ListItem in a Context to store hasKeyboardFocus value
